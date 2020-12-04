@@ -9,7 +9,7 @@ def index():
     return render_template('index.html')
     
 @app.route('/test')
-def index():
+def test():
     return 'test'
 
 @app.route('/webhook', methods=['POST'])
