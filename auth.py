@@ -1,6 +1,7 @@
 from __future__ import print_function
 import pickle
 import os.path
+import os
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -13,6 +14,9 @@ def get_service():
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
+    if b'GOOGLE_TOKEN' in os.environ._data:
+        with open('token.pickle', 'wb') as file:
+            file.write(os.environ.get('GOOGLE_TOKEN'))
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
