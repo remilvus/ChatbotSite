@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 
 app = Flask(__name__)
@@ -11,9 +11,17 @@ def index():
 
 @app.route('/webhook', methods=['POST'])
 def respond():
-    print(request.json);
-    print("this is a webhook")
-    return Response(status=200)
+    data = {"fulfillmentMessages": [
+	    {
+	      "text": {
+		"text": [
+		  "Text response from webhook"
+		]
+	      }
+	    }
+	  ]
+	}
+    return jsonify(data), 200
 
 
 if __name__ == '__main__': app.run(debug=True)
