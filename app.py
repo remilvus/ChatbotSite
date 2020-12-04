@@ -14,8 +14,8 @@ def test():
 
 @app.route('/webhook', methods=['POST'])
 def respond():
-    #add_rhyme('>rhyme')
-    #add_complaint('>complaint')
+    add_rhyme('>rhyme')
+    add_complaint('>complaint')
 
     data = {"fulfillmentMessages": [
 	    {
