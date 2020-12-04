@@ -15,9 +15,8 @@ def get_service():
     # created automatically when the authorization flow completes for the first
     # time.
     if b'GOOGLE_TOKEN' in os.environ._data:
-        with open('token.pickle', 'wb') as file:
-            file.write(os.environ.get('GOOGLE_TOKEN'), encoding='ascii')
-    if os.path.exists('token.pickle'):
+        creds = pickle.loads(eval(os.environ.get('GOOGLE_TOKEN')))
+    elif os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.

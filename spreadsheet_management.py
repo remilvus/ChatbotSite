@@ -1,4 +1,5 @@
 import auth
+import threading
 
 SPREADSHEET_ID = '1BkeZPUWZ87pGjaAkgoRSOeBhuOSn0Nw9V856wOgWZsM'
 RHYME_NAME = "rhymes"
@@ -43,10 +44,14 @@ def add_text(text, name):
     return respond
 
 def add_rhyme(rhyme):
-    return add_text(rhyme, RHYME_NAME)
+    t = threading.Thread(target=add_text, args=[rhyme, RHYME_NAME])
+    t.deamon = True
+    t.start()
 
 def add_complaint(complaint):
-    return add_text(complaint, COMPLAINT_NAME)
+    t = threading.Thread(target=add_text, args=[complaint, COMPLAINT_NAME])
+    t.deamon = True
+    t.start()
 
 
 if __name__=="__main__":
