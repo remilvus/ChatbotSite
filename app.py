@@ -7,10 +7,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # add_rhyme('>rhyme')
-    # add_complaint('>complaint')
-    # t = threading.Thread(target=add_rhyme, args=['> a rhyme'])
-    # t.start()
+    t = threading.Thread(target=add_rhyme, args=['> a bad rhyme'])
+    t.deamon = True
+    t.start()
     return render_template('index.html')
     
 @app.route('/test')
