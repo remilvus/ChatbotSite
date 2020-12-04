@@ -16,7 +16,7 @@ def get_service():
     # time.
     if b'GOOGLE_TOKEN' in os.environ._data:
         with open('token.pickle', 'wb') as file:
-            file.write({(os.environ.get('GOOGLE_TOKEN')}, encoding='ascii'))
+            file.write(os.environ.get('GOOGLE_TOKEN'), encoding='ascii')
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
