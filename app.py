@@ -16,18 +16,9 @@ def test():
 def respond():
     add_rhyme('>rhyme')
     add_complaint('>complaint')
-
-    data = {"fulfillmentMessages": [
-	    {
-	      "text": {
-		"text": [
-		  "Text response from webhook"
-		]
-	      }
-	    }
-	  ]
-	}
+    data = {"fulfillmentMessages": [{"text": { "text": [ "Text response from webhook"]}}]}
     return jsonify(data), 200
 
 
-if __name__ == '__main__': app.run(debug=True)
+if __name__ == '__main__': 
+    app.run(debug=True)
