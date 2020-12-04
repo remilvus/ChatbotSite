@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-
+from spreadsheet_management import add_rhyme, add_complaint
 
 app = Flask(__name__)
 
@@ -14,6 +14,8 @@ def test():
 
 @app.route('/webhook', methods=['POST'])
 def respond():
+	add_rhyme('>rhyme')
+	add_complaint('>complaint')
     data = {"fulfillmentMessages": [
 	    {
 	      "text": {

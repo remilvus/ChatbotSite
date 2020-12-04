@@ -1,2 +1,6 @@
 .DS_Store
 static/.DS_Store
+credentials.json
+token.pickle
+__pycache__
+.venv
