@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from spreadsheet_management import add_rhyme, add_complaint, save_rhyme_to_file, load_rhyme_from_file
 import threading
+import re
 
 app = Flask(__name__)
 save_rhyme_to_file(wait=True)
@@ -36,6 +37,19 @@ def respond():
         reply = {
             "fulfillmentText": rhyme,
         }
+        return jsonify(reply), 200
+    elif request_type == 'InStock':
+        text = data['queryResult']['queryText']
+        reply = {
+            "fulfillmentText": "Niestety nie jest to coś czym handujemy :/\nMożesz u nas zakupić garnki.",
+        }
+
+
+        if re.search("garn...[$\.\s,\?]", text, flags=re.MULTILINE) or re.search("garn..[$\.\s,\?]", text, flags=re.MULTILINE):
+            reply = {
+                "fulfillmentText": "Jak najbardziej. Garnki to nasza specjalność",
+            }
+
         return jsonify(reply), 200
 
     reply = {"fulfillmentText": "Coś poszło nie tak - nie rozumiem o co chodzi",}
