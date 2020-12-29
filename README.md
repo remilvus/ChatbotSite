@@ -6,7 +6,7 @@ A site displaying Dialogflow chatbot and backend for managment of fulfillments (
 Dialogflow-messenger works better, but it's currently in beta so there may be some unexpected problems. Both chats have occasional problems on Firefox browser.
 
 Example:chat_example.png
-![chat example](https://github.com/remilvus/ChatbotSite/chat_example.png)
+![chat example](https://github.com/remilvus/ChatbotSite/blob/master/chat_example.png)
 
 
 Project for 'Introduction to AI' classes at the AGH University of Science and Technology in Krakow.
